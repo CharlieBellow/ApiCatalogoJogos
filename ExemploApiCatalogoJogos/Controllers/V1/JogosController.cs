@@ -15,6 +15,7 @@ namespace ExemploApiCatalogoJogos.Controllers.V1
     [ApiController]
     public class JogosController : ControllerBase
     {
+        private const string Error = "Já existe um jogo com este nome para esta produtora";
         private readonly IJogoService _jogoService;
 
         public JogosController(IJogoService jogoService)
@@ -77,7 +78,7 @@ namespace ExemploApiCatalogoJogos.Controllers.V1
             }
             catch (JogoJaCadastradoException ex)
             {
-                return UnprocessableEntity("Já existe um jogo com este nome para esta produtora");
+                return UnprocessableEntity(Error);
             }
         }
 
